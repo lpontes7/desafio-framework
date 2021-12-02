@@ -1,0 +1,23 @@
+org: lpontes7
+app: node-rest-api-typescript
+service: aws-node-rest-api-typescript
+frameworkVersion: '2 || 3'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  environment:
+    NODE_ENV: dev
+
+plugins:
+  - serverless-plugin-typescript 
+  - serverless-offline
+
+functions:
+  calculo:
+    handler: app/handler.calculo
+    events:
+      - http:
+          path: calculo/{numero}
+          method: get
+
